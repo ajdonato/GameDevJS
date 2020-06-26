@@ -16,37 +16,37 @@ class Jogo {
         inimigos.push(inimigoGrande)
         inimigos.push(inimigoVoador)
     }
-        keyPressed(key) {
-            if (key === 'ArrowUp') {
-                personagem.pula();
-                somDoPulo.play();
-            }
+    keyPressed(key) {
+        if (key === 'ArrowUp') {
+            personagem.pula();
+            somDoPulo.play();
         }
-        draw() {
-            cenario.exibe();
-            cenario.move();
-            pontuacao.exibe();
-            pontuacao.adicionarPonto()
-            personagem.aplicarGravidade();
-            personagem.exibe();
+    }
+    draw() {
+        cenario.exibe();
+        cenario.move();
+        pontuacao.exibe();
+        pontuacao.adicionarPonto()
+        personagem.aplicarGravidade();
+        personagem.exibe();
 
-            const inimigo = inimigos[this.inimigoAtual];
-            const inimigoVisivel = inimigo.x < - inimigo.largura;
+        const inimigo = inimigos[this.inimigoAtual];
+        const inimigoVisivel = inimigo.x < - inimigo.largura;
 
-            inimigo.exibe()
-            inimigo.move()
+        inimigo.exibe()
+        inimigo.move()
 
-            if (inimigoVisivel) {
-                this.inimigoAtual++;
-                if (this.inimigoAtual > 2) {
-                    this.inimigoAtual = 0;
-                }
-                inimigo.velocidade = parseInt(random(10, 30));
+        if (inimigoVisivel) {
+            this.inimigoAtual++;
+            if (this.inimigoAtual > 2) {
+                this.inimigoAtual = 0;
             }
-
-            if (personagem.estaColidindo(inimigo)) {
-                image(imagemGameOver, width / 2 - 220, height / 2.5)
-                noLoop();
-            }
+            inimigo.velocidade = parseInt(random(10, 30));
         }
+
+        if (personagem.estaColidindo(inimigo)) {
+            image(imagemGameOver, width / 2 - 220, height / 2.5)
+            noLoop();
+        }
+    }
 }

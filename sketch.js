@@ -3,7 +3,13 @@ function setup() {
   frameRate(40)
   somDoJogo.loop();
   jogo = new Jogo();
+  telaInicial = new TelaInicial();
   jogo.setup();
+  cenas = {
+    jogo,
+    telaInicial
+  };
+  botaoInicial = new BotaoInicial('Iniciar', width / 2, height / 2);
 }
 
 function keyPressed() {
@@ -16,5 +22,5 @@ function touchStarted() {
 }
 
 function draw() {
-  jogo.draw();
+  cenas[cenaAtual].draw();
 }
