@@ -16,6 +16,11 @@ function keyPressed() {
  jogo.keyPressed(key);
 }
 
+function touchStarted() {
+  personagem.pula()
+  somDoPulo.play()
+}
+
 function draw() {
   cenas[cenaAtual].draw();
 }
